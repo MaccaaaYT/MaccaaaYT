@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Мия</title>
+  <meta name="description" content="Мия — нежная лисичка, твой голосовой ИИ-помощник">
+  <meta name="theme-color" content="#fff4ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1726" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Мия">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/fox.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-name">Мия</span>
+        <span class="status" id="status">рядом с тобой</span>
+      </div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Настройки">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7Zm7.4-2.5a7.6 7.6 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.4 7.4 0 0 0-1.7-1l-.4-2.5h-3.8l-.4 2.5a7.4 7.4 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7.6 7.6 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7.4 7.4 0 0 0 1.7 1l.4 2.5h3.8l.4-2.5a7.4 7.4 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </button>
+    </header>
+
+    <section class="stage" id="stage">
+      <div class="fox-wrap" id="fox" data-state="idle" aria-hidden="true">
+        <div class="halo"></div>
+        <svg class="fox" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f7a25a"/>
+              <stop offset="1" stop-color="#ec7a34"/>
+            </linearGradient>
+          </defs>
+          <g class="head">
+            <g class="ear ear-left">
+              <path d="M60 96 L46 26 Q48 18 55 22 L98 66 Z" fill="url(#fur)" stroke="#d9672a" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M65 84 L55 38 L86 68 Z" fill="#ffd9c4"/>
+              <path d="M46 26 Q48 18 55 22 L68 35 L50 46 Z" fill="#7a3f2a"/>
+            </g>
+            <g class="ear ear-right">
+              <path d="M140 96 L154 26 Q152 18 145 22 L102 66 Z" fill="url(#fur)" stroke="#d9672a" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M135 84 L145 38 L114 68 Z" fill="#ffd9c4"/>
+              <path d="M154 26 Q152 18 145 22 L132 35 L150 46 Z" fill="#7a3f2a"/>
+              <g class="flower" transform="translate(140 62)">
+                <circle cx="0" cy="-6" r="5" fill="#ffb3c7"/>
+                <circle cx="5.7" cy="-1.9" r="5" fill="#ffb3c7"/>
+                <circle cx="3.5" cy="4.9" r="5" fill="#ffb3c7"/>
+                <circle cx="-3.5" cy="4.9" r="5" fill="#ffb3c7"/>
+                <circle cx="-5.7" cy="-1.9" r="5" fill="#ffb3c7"/>
+                <circle r="3.2" fill="#ffe08a"/>
+              </g>
+            </g>
+            <path d="M44 110 L10 128 L34 132 L18 148 L48 146 L40 160 L72 150 Z" fill="#fffaf4" stroke="#e6c3a6" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M156 110 L190 128 L166 132 L182 148 L152 146 L160 160 L128 150 Z" fill="#fffaf4" stroke="#e6c3a6" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M100 56 C140 56 168 80 170 110 C171 123 166 133 155 141 L120 166 Q100 179 80 166 L45 141 C34 133 29 123 30 110 C32 80 60 56 100 56 Z" fill="url(#fur)" stroke="#d9672a" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M100 114 C90 113 82 100 66 103 C50 107 40 121 46 134 L82 165 Q100 177 118 165 L154 134 C160 121 150 107 134 103 C118 100 110 113 100 114 Z" fill="#fffaf4"/>
+            <g class="eyes">
+              <g class="eye">
+                <ellipse cx="74" cy="112" rx="9.5" ry="11.5" fill="#3b2626"/>
+                <circle cx="77.5" cy="107.5" r="3.4" fill="#fff"/>
+                <circle cx="71" cy="116" r="1.6" fill="#fff" opacity=".8"/>
+              </g>
+              <g class="eye">
+                <ellipse cx="126" cy="112" rx="9.5" ry="11.5" fill="#3b2626"/>
+                <circle cx="129.5" cy="107.5" r="3.4" fill="#fff"/>
+                <circle cx="123" cy="116" r="1.6" fill="#fff" opacity=".8"/>
+              </g>
+            </g>
+            <ellipse class="blush" cx="58" cy="134" rx="10" ry="5.5" fill="#ff9fb2" opacity=".55"/>
+            <ellipse class="blush" cx="142" cy="134" rx="10" ry="5.5" fill="#ff9fb2" opacity=".55"/>
+            <path d="M92.5 128 Q100 124 107.5 128 Q104 136 100 136.5 Q96 136 92.5 128 Z" fill="#3b2626"/>
+            <path class="mouth-closed" d="M91 142 Q95.5 148 100 142.5 Q104.5 148 109 142" fill="none" stroke="#3b2626" stroke-width="2.4" stroke-linecap="round"/>
+            <ellipse class="mouth-open" cx="100" cy="146" rx="6.5" ry="6" fill="#8c3a3f"/>
+          </g>
+        </svg>
+        <div class="thinking-dots"><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <main class="chat" id="chat" aria-live="polite">
+      <div class="chat-inner" id="messages"></div>
+    </main>
+
+    <div class="install-hint" id="installHint" hidden>
+      <span>Чтобы Мия могла писать первой, добавь её на экран «Домой»: <b>Поделиться</b> → <b>На экран «Домой»</b>.</span>
+      <button class="link-btn" data-close="installHint">Понятно</button>
+    </div>
+    <div class="install-hint" id="notifyHint" hidden>
+      <span>Разрешишь мне иногда писать тебе первой? 🦊</span>
+      <button class="pill-btn" id="notifyHintYes">Да</button>
+      <button class="link-btn" data-close="notifyHint">Позже</button>
+    </div>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <textarea id="input" rows="1" placeholder="Напиши Мие…" aria-label="Сообщение" enterkeyhint="send"></textarea>
+      <button type="submit" class="send-btn" id="sendBtn" aria-label="Отправить">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-6 16-2.5-6.5L4 12Z" fill="currentColor"/></svg>
+      </button>
+      <button type="button" class="mic-btn" id="micBtn" aria-label="Говорить голосом">
+        <svg class="mic-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="stop-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2.5" fill="currentColor"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- Вход -->
+  <div class="login" id="login" hidden>
+    <form class="login-card" id="loginForm">
+      <img src="/icons/icon-192.png" alt="" width="96" height="96">
+      <h1>Привет, это Мия!</h1>
+      <p>Введи пароль, который ты задал(а) в настройках Vercel.</p>
+      <input type="password" id="password" placeholder="Пароль" autocomplete="current-password" required>
+      <button class="pill-btn wide" type="submit">Войти</button>
+      <p class="error" id="loginError" hidden>Неверный пароль</p>
+    </form>
+  </div>
+
+  <!-- Настройки -->
+  <dialog class="sheet" id="settings">
+    <form method="dialog" class="sheet-head">
+      <h2>Настройки</h2>
+      <button class="icon-btn" aria-label="Закрыть">✕</button>
+    </form>
+
+    <div class="sheet-body">
+      <section>
+        <h3>О тебе</h3>
+        <label class="field">Как тебя зовут
+          <input type="text" id="userName" placeholder="Имя" maxlength="60">
+        </label>
+      </section>
+
+      <section>
+        <h3>Голос</h3>
+        <label class="field">Озвучивать ответы
+          <select id="ttsMode">
+            <option value="voice">Когда я говорю голосом</option>
+            <option value="always">Всегда</option>
+            <option value="never">Никогда</option>
+          </select>
+        </label>
+        <label class="toggle"><input type="checkbox" id="handsFree"> Слушать снова после ответа (разговор без рук)</label>
+        <label class="field">Голос Мии
+          <select id="voiceSelect"></select>
+        </label>
+        <label class="field">Скорость речи <span id="rateValue"></span>
+          <input type="range" id="rate" min="0.7" max="1.4" step="0.05">
+        </label>
+        <label class="field">Высота голоса <span id="pitchValue"></span>
+          <input type="range" id="pitch" min="0.8" max="1.6" step="0.05">
+        </label>
+        <button class="pill-btn ghost" id="voiceTest" type="button">Послушать</button>
+        <label class="field">Распознавание речи
+          <select id="sttMode">
+            <option value="auto">Автоматически</option>
+            <option value="browser">Встроенное в браузер</option>
+            <option value="gemini">Через Gemini (запись звука)</option>
+          </select>
+        </label>
+      </section>
+
+      <section>
+        <h3>Мия пишет первой</h3>
+        <p class="muted" id="pushStatus"></p>
+        <div class="row">
+          <button class="pill-btn" id="pushEnable" type="button">Включить уведомления</button>
+          <button class="pill-btn ghost" id="pushTest" type="button">Проверить</button>
+        </div>
+        <div id="slots" class="slots"></div>
+      </section>
+
+      <section>
+        <h3>Память</h3>
+        <p class="muted">Что Мия помнит о тебе:</p>
+        <ul class="facts" id="facts"></ul>
+        <details class="summary-box">
+          <summary>Краткое содержание прошлых разговоров</summary>
+          <p id="summaryText" class="muted"></p>
+        </details>
+        <div class="row">
+          <button class="pill-btn ghost danger" id="clearFacts" type="button">Забыть всё о себе</button>
+          <button class="pill-btn ghost danger" id="clearHistory" type="button">Очистить переписку</button>
+        </div>
+      </section>
+
+      <section>
+        <h3>Прочее</h3>
+        <p class="muted" id="serverInfo"></p>
+        <button class="pill-btn ghost" id="logout" type="button">Выйти на этом устройстве</button>
+      </section>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
