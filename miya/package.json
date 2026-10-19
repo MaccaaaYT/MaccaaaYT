@@ -1,0 +1,22 @@
+{
+  "name": "miya",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Мия — голосовой ИИ-помощник в образе лисички (PWA + Vercel + Gemini)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "vapid": "node scripts/generate-vapid.js",
+    "crons": "node scripts/generate-crons.js",
+    "icons": "node scripts/render-icons.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.39.0",
+    "@vercel/functions": "^3.10.1",
+    "web-push": "^3.6.7"
+  }
+}

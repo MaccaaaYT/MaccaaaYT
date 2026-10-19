@@ -1,0 +1,56 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "outputDirectory": "public",
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 60
+    }
+  },
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        }
+      ]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron?slot=morning",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/cron?slot=stretch_morning",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron?slot=lunch",
+      "schedule": "0 10 * * *"
+    },
+    {
+      "path": "/api/cron?slot=stretch_afternoon",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/cron?slot=evening",
+      "schedule": "0 18 * * *"
+    }
+  ]
+}
